@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    background-color: #2c3a47;
+    /*用于设置图像居中 */
+    align-items: center;
+    justify-content: center;
+    width: 1920px;
+    height: 1000px;
+    animation: animate1 10s linear infinite;
+}
+
+/* 用于设置动画属性 其中filter用于做利镜其中的hue-rotate属性让图像运用色相旋转*/
+@keyframes animate1 {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+main .cube {
+    position: relative;
+    height: 120px;
+    width: 120px;
+}
+
+main .cube span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 用于设置一个圆圈被分成几份 */
+    transform: rotate(calc(18deg*var(--i)));
+}
+
+/* :before用于设置在给定的属性之前添加效果 */
+main .cube span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: aqua;
+    box-shadow: 0 0 2px aqua, 0 0 4px aqua, 0 0 6px aqua, 0 0 7px aqua, 0 0 8px aqua;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.1s*var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(1);
+    }
+
+    80%,
+    100% {
+        transform: scale(0);
+    }
+}
+
+.loading {
+    color: #fff;
+    font-size: 20px;
+    position: relative;
+    top: 100px;
+    right: 100px;
+}
+
+@media (min-width:765px) {}
